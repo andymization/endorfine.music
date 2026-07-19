@@ -165,6 +165,9 @@
     var albumOpen = document.getElementById('albumOpen');
     var albumOpenName = document.getElementById('albumOpenName');
 
+    var heroPlatform = document.getElementById('heroPlatform');
+    var heroNames = heroPlatform ? [].slice.call(heroPlatform.querySelectorAll('.hp-name')) : [];
+
     var selectPlatform = function (key) {
       var p = PLATFORMS[key];
       if (!p) return;
@@ -178,6 +181,10 @@
       });
       albumOpen.href = p.album;
       albumOpenName.textContent = p.name;
+      if (heroPlatform) {
+        heroPlatform.href = p.album;
+        heroNames.forEach(function (n) { n.textContent = p.name; });
+      }
       try { localStorage.setItem('endorfine-platform', key); } catch (e) {}
     };
 

@@ -280,6 +280,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   max-width: 38rem;
   margin-bottom: 3rem;
 }
+.sec-sub-lead { margin-bottom: 0.9rem; }
 
 /* ---------- Album / Player ---------- */
 .album {
