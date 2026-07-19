@@ -224,19 +224,27 @@
     selectPlatform(initialP);
   }
 
-  /* ---------- Zitat-Banner: sanfte Rotation ---------- */
+  /* ---------- Zitat-Banner: Filmabspann-Logik ----------
+     einblenden -> stehen lassen -> komplett ausblenden -> kurze
+     Leere -> nächstes Zitat. Kein Überlappen. */
   var dividerQuote = document.querySelector('.divider-quote');
   if (dividerQuote && !reducedMotion) {
     var dqs = [].slice.call(dividerQuote.querySelectorAll('.dq'));
     if (dqs.length > 1) {
       dividerQuote.classList.add('rotating');
       var dqi = 0;
-      dqs[dqi].classList.add('active');
-      setInterval(function () {
-        dqs[dqi].classList.remove('active');
-        dqi = (dqi + 1) % dqs.length;
+      var DQ_FADE = 3500, DQ_HOLD = 4500, DQ_GAP = 500;
+      var dqCycle = function () {
         dqs[dqi].classList.add('active');
-      }, 14000);
+        setTimeout(function () {
+          dqs[dqi].classList.remove('active');
+          setTimeout(function () {
+            dqi = (dqi + 1) % dqs.length;
+            dqCycle();
+          }, DQ_FADE + DQ_GAP);
+        }, DQ_FADE + DQ_HOLD);
+      };
+      dqCycle();
     }
   }
 

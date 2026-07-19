@@ -580,32 +580,45 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 12px;
-  /* oben Platz lassen, damit das rote Anführungszeichen frei steht */
-  padding: 3.6rem 1.6rem 1.4rem;
+  padding: 1.6rem 1.6rem 1.5rem;
   position: relative;
   transition: transform 0.3s, border-color 0.3s;
+  /* Grafisches Anführungszeichen als eigene Spalte, Text daneben */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.9rem;
 }
 .quote:nth-child(odd) { transform: rotate(-0.8deg); }
 .quote:nth-child(even) { transform: rotate(0.7deg); }
 .quote:hover { transform: translateY(-5px) rotate(0deg); border-color: rgba(196, 48, 43, 0.5); }
 .quote::before {
-  content: "„";
-  position: absolute;
-  top: -0.6rem;
-  left: 1rem;
+  content: "“";
+  grid-column: 1;
   font-family: Georgia, serif;
-  font-size: 4.2rem;
-  line-height: 1;
+  font-size: 3.4rem;
+  line-height: 0.72;
   color: var(--red);
-  opacity: 0.55;
+  opacity: 0.75;
 }
 .quote p {
+  grid-column: 2;
   font-style: italic;
   font-size: 0.96rem;
   color: var(--text);
-  position: relative;
+}
+/* Schließendes Zeichen direkt nach dem letzten Wort */
+.quote p::after {
+  content: "\00a0”";
+  font-family: Georgia, serif;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 0;
+  vertical-align: -0.42em;
+  color: var(--red);
+  opacity: 0.75;
 }
 .quote cite {
+  grid-column: 2;
   display: block;
   margin-top: 1rem;
   font-size: 0.75rem;
