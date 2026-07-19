@@ -687,6 +687,22 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   .nav-burger.open span:nth-child(2) { opacity: 0; }
   .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .section { padding: 4.5rem 0; }
-  .gigs td:nth-child(2) { white-space: normal; }
   .quote p { font-size: 0.92rem; }
+
+  /* Konzert-Tabelle gestapelt statt breit — kein horizontales Scrollen */
+  .gigs table, .gigs tbody { display: block; }
+  .gigs tr {
+    display: block;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .gigs td {
+    display: block;
+    border: none;
+    padding: 0;
+    white-space: normal;
+  }
+  .gigs td:first-child { font-size: 0.8rem; }
+  html[data-lang="de"] .gigs td[data-l="de"],
+  html[data-lang="en"] .gigs td[data-l="en"] { display: block; }
 }
