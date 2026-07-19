@@ -61,10 +61,8 @@
   </button>
   <div class="nav-links" id="navLinks">
     <a href="#musik"><span data-l="de">Musik</span><span data-l="en">Music</span></a>
-    <a href="#band">Band</a>
     <a href="#geschichte"><span data-l="de">Geschichte</span><span data-l="en">Story</span></a>
     <a href="#presse"><span data-l="de">Presse</span><span data-l="en">Press</span></a>
-    <a href="#galerie"><span data-l="de">Galerie</span><span data-l="en">Gallery</span></a>
     <a href="#kontakt"><span data-l="de">Kontakt</span><span data-l="en">Contact</span></a>
     <button class="lang-toggle" id="langToggle" aria-label="Sprache wechseln / switch language">EN</button>
   </div>
@@ -107,259 +105,40 @@
   <div class="wrap">
     <h2 class="sec-title reveal"><span data-l="de">Musik</span><span data-l="en">Music</span></h2>
     <p class="sec-sub reveal">
-      <span data-l="de">Vier eigene Kompositionen, aufgenommen 2002 — remastered und wieder verfügbar.</span>
-      <span data-l="en">Four original compositions, recorded in 2002 — remastered and available again.</span>
+      <span data-l="de">Vier eigene Kompositionen, aufgenommen 2002 — auf allen Plattformen. Einfach antippen und im Lieblingsdienst weiterhören.</span>
+      <span data-l="en">Four original compositions, recorded in 2002 — on all platforms. Tap and continue in your favourite service.</span>
     </p>
 
     <div class="album reveal">
       <div class="album-cover">
         <img src="assets/img/cover.jpg" alt="endorfine — Mosaic of Songs (Cover)" width="800" height="800" loading="lazy">
       </div>
-      <div class="album-player">
+      <div class="album-info">
         <div class="album-head">
           <h3><img src="assets/img/mosaic-script.png" alt="Mosaic of Songs" width="775" height="161"></h3>
           <p class="album-meta">EP · 2002 · <span data-l="de">4 Titel</span><span data-l="en">4 tracks</span></p>
         </div>
-
-        <div class="player" id="player">
-          <div class="player-controls">
-            <button class="pbtn" id="btnPrev" aria-label="Vorheriger Titel">
-              <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" fill="currentColor"/></svg>
-            </button>
-            <button class="pbtn pbtn-play" id="btnPlay" aria-label="Abspielen / Pause">
-              <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-              <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zm8 0h4v14h-4z" fill="currentColor"/></svg>
-            </button>
-            <button class="pbtn" id="btnNext" aria-label="Nächster Titel">
-              <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z" fill="currentColor"/></svg>
-            </button>
-            <div class="player-info">
-              <span class="player-track" id="playerTrack">When Sense Meets Sensibility</span>
-              <span class="player-time"><span id="tCur">0:00</span> / <span id="tDur">0:00</span></span>
-            </div>
-          </div>
-          <div class="player-seek" id="seek">
-            <div class="player-seek-fill" id="seekFill"></div>
-          </div>
-
-          <ol class="tracklist" id="tracklist">
-            <li data-src="assets/audio/01-when-sense-meets-sensibility.m4a" data-title="When Sense Meets Sensibility">
-              <button class="track-play" aria-label="Abspielen"><span class="track-num">1</span></button>
-              <span class="track-title">When Sense Meets Sensibility <small>(Radio Edit)</small></span>
-              <span class="track-dur">4:00</span>
-            </li>
-            <li data-src="assets/audio/02-thank-you.m4a" data-title="Thank You">
-              <button class="track-play" aria-label="Abspielen"><span class="track-num">2</span></button>
-              <span class="track-title">Thank You</span>
-              <span class="track-dur">4:01</span>
-            </li>
-            <li data-src="assets/audio/03-mosaic-of-songs.m4a" data-title="Mosaic of Songs">
-              <button class="track-play" aria-label="Abspielen"><span class="track-num">3</span></button>
-              <span class="track-title">Mosaic of Songs</span>
-              <span class="track-dur">4:32</span>
-            </li>
-            <li data-src="assets/audio/04-twinkle-of-an-eye.m4a" data-title="Twinkle of an Eye">
-              <button class="track-play" aria-label="Abspielen"><span class="track-num">4</span></button>
-              <span class="track-title">Twinkle of an Eye</span>
-              <span class="track-dur">5:10</span>
-            </li>
-          </ol>
-          <audio id="audio" preload="none"></audio>
+        <ol class="album-tracks">
+          <li>When Sense Meets Sensibility <small>(Radio Edit)</small></li>
+          <li>Thank You</li>
+          <li>Mosaic of Songs</li>
+          <li>Twinkle of an Eye</li>
+        </ol>
+        <p class="platforms-label">
+          <span data-l="de">Jetzt streamen:</span>
+          <span data-l="en">Stream now:</span>
+        </p>
+        <div class="platform-grid">
+          <a class="platform platform-spotify" href="https://open.spotify.com/album/18BYh9EEyXQy0uVqQ6r5eS" target="_blank" rel="noopener">Spotify</a>
+          <a class="platform" href="https://music.apple.com/de/album/1760308488" target="_blank" rel="noopener">Apple&nbsp;Music</a>
+          <a class="platform" href="https://music.youtube.com/playlist?list=OLAK5uy_nRvWJy2cDA9tz8B856mHMKkKHnALqNb88" target="_blank" rel="noopener">YouTube&nbsp;Music</a>
+          <a class="platform" href="https://music.amazon.com/albums/B0DBR2V2N7" target="_blank" rel="noopener">Amazon&nbsp;Music</a>
+          <a class="platform" href="https://tidal.com/album/378540836" target="_blank" rel="noopener">Tidal</a>
+          <a class="platform" href="https://www.deezer.com/album/622931781" target="_blank" rel="noopener">Deezer</a>
+          <a class="platform" href="https://soundcloud.com/endorfine-music/sets/mosaic-of-songs" target="_blank" rel="noopener">SoundCloud</a>
+          <a class="platform" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener"><span data-l="de">Alle Links</span><span data-l="en">All links</span></a>
         </div>
       </div>
-    </div>
-
-    <div class="platforms reveal">
-      <p class="platforms-label">
-        <span data-l="de">Überall streamen:</span>
-        <span data-l="en">Stream everywhere:</span>
-      </p>
-      <div class="platform-grid">
-        <a class="platform platform-spotify" href="https://open.spotify.com/album/18BYh9EEyXQy0uVqQ6r5eS" target="_blank" rel="noopener">Spotify</a>
-        <a class="platform" href="https://music.apple.com/de/album/1760308488" target="_blank" rel="noopener">Apple&nbsp;Music</a>
-        <a class="platform" href="https://music.youtube.com/playlist?list=OLAK5uy_nRvWJy2cDA9tz8B856mHMKkKHnALqNb88" target="_blank" rel="noopener">YouTube&nbsp;Music</a>
-        <a class="platform" href="https://music.amazon.com/albums/B0DBR2V2N7" target="_blank" rel="noopener">Amazon&nbsp;Music</a>
-        <a class="platform" href="https://tidal.com/album/378540836" target="_blank" rel="noopener">Tidal</a>
-        <a class="platform" href="https://www.deezer.com/album/622931781" target="_blank" rel="noopener">Deezer</a>
-        <a class="platform" href="https://soundcloud.com/endorfine-music/sets/mosaic-of-songs" target="_blank" rel="noopener">SoundCloud</a>
-        <a class="platform" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener"><span data-l="de">Alle Links</span><span data-l="en">All links</span></a>
-      </div>
-    </div>
-
-    <div class="lyrics reveal">
-      <h3 class="lyrics-title"><span data-l="de">Songtexte</span><span data-l="en">Lyrics</span></h3>
-      <details class="lyric">
-        <summary>When Sense Meets Sensibility</summary>
-        <pre>When sense meets sensibility
-You're waging war against yourself
-Head against heart
-And you're feeling helpless to act
-
-When sense meets sensibility
-You're losing control
-You're losing yourself
-Because you say "yes" when you mean "no"
-
-For his using you
-He's not worth it
-That you're becoming his toy
-For his using you
-You're giving him yourself
-
-When sense meets sensibility
-You'd know what would be reasonable
-But you're trapped in between
-Your longing for, hope for, what you call love
-
-When sense meets sensibility
-You're giving up your pride
-To save yourself not knowing
-What you are missing
-
-When sense meets sensibility
-Struggle against the pressure
-That's pulling you down
-Watch yourself
-And don't give up</pre>
-      </details>
-      <details class="lyric">
-        <summary>Thank You</summary>
-        <pre>You're so far away from here
-But still close to me
-How could I possibly forget you
-For a single moment
-
-Not a day passes on which I'm
-Not bearing you in my mind
-On which I'm not dreaming to wake up
-Lying in your arms
-
-And whenever I need you, whenever I want you
-I know, I know you'll be there
-
-And I'd like to thank you
-For what you're giving me
-For what you're doing
-For what you are
-And I'd like to ask you
-Never to give me up
-
-Could be that I don't keep appreciating
-Could be that I take too much for granted
-Could be that I'm not doing always justice to you
-But there hasn't been a single moment
-Where I stopped loving you
-
-And whenever you need me, whenever you want me
-I promise you to be there
-
-And I'd like to thank you
-For your love, your confidence
-For your being so radiant and warm
-And I'd like to ask you
-To dream your dreams with me</pre>
-      </details>
-      <details class="lyric">
-        <summary>Mosaic of Songs</summary>
-        <pre>You impressed me
-Put me entirely under your spell
-Even if I don't belong to you
-
-Pictures of you left a brand on my soul
-Songs of you echo within my heart
-And I can't let go of you
-
-And each one of them
-Stands for a piece of my memory
-
-It's going to fade away
-But never will be vanished
-And what remains is
-A mosaic of songs reminding me
-
-So many words unspoken
-So many things undone
-But I didn't miss anything
-I've been living
-
-Pictures of you left a brand on my soul
-Songs of you echo within my heart
-And I can't let go of you
-
-It's going to fade away
-But never will be vanished
-And what remains is
-A mosaic of songs reminding me</pre>
-      </details>
-      <details class="lyric">
-        <summary>Twinkle of an Eye</summary>
-        <pre>Just a twinkle of an eye
-A picture book of clouds
-And big white animals
-Which stand still briefly
-Dissolve to form again
-Certain weak, though I know it just looks like that
-Endless, endless, endless...
-
-Now holding time and snatch at it
-Or looking in the future
-Let's see what will happen or better leave
-I just don't wanna know
-What will happen in a few years?
-No matter, it will happen in any case
-
-This, this moment
-Is everything that counts
-
-Just a twinkle of an eye
-A picture book of clouds
-Big white animals which stand still briefly
-
-I want to spend it with you
-Maybe you're just a cloud too
-And drift away
-
-This, this moment
-Is everything that counts
-This moment</pre>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BAND ============ -->
-<section class="section section-alt" id="band">
-  <div class="wrap">
-    <h2 class="sec-title reveal">Band</h2>
-    <p class="sec-sub reveal">
-      <span data-l="de">Sechs Musiker, ausschließlich eigene Kompositionen — irgendwo zwischen Pop und Rock.</span>
-      <span data-l="en">Six musicians, exclusively original compositions — somewhere between pop and rock.</span>
-    </p>
-    <div class="members">
-      <figure class="member reveal">
-        <img src="assets/img/band/silvie.jpg" alt="Silvia Bogen" loading="lazy" width="241" height="280">
-        <figcaption><strong>Silvia Bogen</strong><span>vocals</span></figcaption>
-      </figure>
-      <figure class="member reveal">
-        <img src="assets/img/band/andy.jpg" alt="Andreas Meffert" loading="lazy" width="241" height="280">
-        <figcaption><strong>Andreas Meffert</strong><span>guitar</span></figcaption>
-      </figure>
-      <figure class="member reveal">
-        <img src="assets/img/band/stephan.jpg" alt="Stephan Sander" loading="lazy" width="241" height="280">
-        <figcaption><strong>Stephan Sander</strong><span>guitar</span></figcaption>
-      </figure>
-      <figure class="member reveal">
-        <img src="assets/img/band/anke.jpg" alt="Anke Hofmeister" loading="lazy" width="240" height="280">
-        <figcaption><strong>Anke Hofmeister</strong><span>bass</span></figcaption>
-      </figure>
-      <figure class="member reveal">
-        <img src="assets/img/band/musti.jpg" alt="Mustafa Arici" loading="lazy" width="228" height="280">
-        <figcaption><strong>Mustafa Arici</strong><span>keyboard</span></figcaption>
-      </figure>
-      <figure class="member reveal">
-        <img src="assets/img/band/stefan.jpg" alt="Stefan van den Berk" loading="lazy" width="241" height="280">
-        <figcaption><strong>Stefan van den Berk</strong><span>drums</span></figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -380,12 +159,12 @@ This moment</pre>
     <h2 class="sec-title reveal"><span data-l="de">Geschichte</span><span data-l="en">The Story</span></h2>
     <div class="bio reveal">
       <p>
-        <span data-l="de">Gegründet wurde endorfine im Januar 1999 von Gitarrist Andy Meffert und Schlagzeuger Stefan van den Berk. Kurze Zeit später stieß Sängerin Silvia Bogen dazu, und aus ersten Song-Ideen wurden eigene Kompositionen. Mit Bassistin Anke Hofmeister spielte sich die Band im April 2000 beim ersten Auftritt im Ludwigsburger Waldhaus warm.</span>
-        <span data-l="en">endorfine was founded in January 1999 by guitarist Andy Meffert and drummer Stefan van den Berk. Singer Silvia Bogen joined shortly after, and the first song ideas grew into original compositions. With bassist Anke Hofmeister on board, the band played its first show at the Waldhaus in Ludwigsburg in April 2000.</span>
+        <span data-l="de">Gegründet wurde endorfine im Januar 1999 von Gitarrist Andy und Schlagzeuger Stefan. Kurze Zeit später stieß Sängerin Silvia dazu, und aus ersten Song-Ideen wurden eigene Kompositionen. Mit Bassistin Anke spielte sich die Band im April 2000 beim ersten Auftritt im Ludwigsburger Waldhaus warm.</span>
+        <span data-l="en">endorfine was founded in January 1999 by guitarist Andy and drummer Stefan. Singer Silvia joined shortly after, and the first song ideas grew into original compositions. With bassist Anke on board, the band played its first show at the Waldhaus in Ludwigsburg in April 2000.</span>
       </p>
       <p>
-        <span data-l="de">Im Sommer 2000 komplettierten Gitarrist Stephan Sander und Keyboarder Mustafa Arici das Sextett. Die Songs wurden aufwendiger, die Auftritte größer — vom Scala Ludwigsburg über das LKA Stuttgart bis zur eigenen CD-Release-Party. 2002 erschien die EP <em>Mosaic of Songs</em>, die heute auf allen großen Streaming-Plattformen zu hören ist.</span>
-        <span data-l="en">In the summer of 2000, guitarist Stephan Sander and keyboardist Mustafa Arici completed the six-piece. The songs grew more elaborate, the shows bigger — from Scala Ludwigsburg to the LKA in Stuttgart to the band's own CD release party. In 2002 the EP <em>Mosaic of Songs</em> was released; today it can be heard on all major streaming platforms.</span>
+        <span data-l="de">Im Sommer 2000 komplettierten Gitarrist Stephan und Keyboarder Mustafa das Sextett. Die Songs wurden aufwendiger, die Auftritte größer — vom Scala Ludwigsburg über das LKA Stuttgart bis zur eigenen CD-Release-Party. 2002 erschien die EP <em>Mosaic of Songs</em>, die heute auf allen großen Streaming-Plattformen zu hören ist.</span>
+        <span data-l="en">In the summer of 2000, guitarist Stephan and keyboardist Mustafa completed the six-piece. The songs grew more elaborate, the shows bigger — from Scala Ludwigsburg to the LKA in Stuttgart to the band's own CD release party. In 2002 the EP <em>Mosaic of Songs</em> was released; today it can be heard on all major streaming platforms.</span>
       </p>
     </div>
 
@@ -481,7 +260,7 @@ This moment</pre>
         <cite>Asperger Nachrichten · 14.03.2002</cite>
       </blockquote>
       <blockquote class="quote reveal">
-        <p>„Feinsten Poprock gab es von Endorfine auf die Ohren. Das Sextett aus Ludwigsburg bot einige wunderbare Balladen, bei denen die ungewöhnlich klare Stimme von Sängerin Silvia Bogen herausragte."</p>
+        <p>„Feinsten Poprock gab es von Endorfine auf die Ohren. Das Sextett aus Ludwigsburg bot einige wunderbare Balladen, bei denen die ungewöhnlich klare Stimme von Sängerin Silvia B. herausragte."</p>
         <cite>Schlagseite · 31.01.2001</cite>
       </blockquote>
       <blockquote class="quote reveal">
@@ -493,29 +272,9 @@ This moment</pre>
         <cite>Schlagseite · 24.07.2001</cite>
       </blockquote>
       <blockquote class="quote reveal">
-        <p>„Besonders bemerkenswert ist die Arbeit von Keyboarder Mustafa Arici: Sein Instrument übernimmt oft die Melodieführung und verpasst der Musik des Sextetts eine sehr eigene Note."</p>
+        <p>„Besonders bemerkenswert ist die Arbeit von Keyboarder Mustafa A.: Sein Instrument übernimmt oft die Melodieführung und verpasst der Musik des Sextetts eine sehr eigene Note."</p>
         <cite>Ludwigsburger Kreiszeitung · 16.07.2002</cite>
       </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GALERIE ============ -->
-<section class="section" id="galerie">
-  <div class="wrap">
-    <h2 class="sec-title reveal"><span data-l="de">Galerie</span><span data-l="en">Gallery</span></h2>
-    <div class="gallery" id="gallery">
-      <a href="assets/img/gallery/g1.jpg" class="gal-item reveal"><img src="assets/img/gallery/g1-thumb.jpg" alt="endorfine Bandfoto" loading="lazy"></a>
-      <a href="assets/img/gallery/g2.jpg" class="gal-item reveal"><img src="assets/img/gallery/g2-thumb.jpg" alt="endorfine Bandfoto im Scala" loading="lazy"></a>
-      <a href="assets/img/gallery/g3.jpg" class="gal-item reveal"><img src="assets/img/gallery/g3-thumb.jpg" alt="endorfine Bandfoto" loading="lazy"></a>
-      <a href="assets/img/gallery/g4.jpg" class="gal-item reveal"><img src="assets/img/gallery/g4-thumb.jpg" alt="endorfine Bandfoto" loading="lazy"></a>
-      <a href="assets/img/gallery/g5.jpg" class="gal-item reveal"><img src="assets/img/gallery/g5-thumb.jpg" alt="endorfine live" loading="lazy"></a>
-      <a href="assets/img/gallery/g6.jpg" class="gal-item reveal"><img src="assets/img/gallery/g6-thumb.jpg" alt="endorfine live" loading="lazy"></a>
-      <a href="assets/img/gallery/g7.jpg" class="gal-item reveal"><img src="assets/img/gallery/g7-thumb.jpg" alt="endorfine live" loading="lazy"></a>
-      <a href="assets/img/gallery/g8.jpg" class="gal-item reveal"><img src="assets/img/gallery/g8-thumb.jpg" alt="endorfine live auf der Bühne" loading="lazy"></a>
-      <a href="assets/img/gallery/g9.jpg" class="gal-item reveal"><img src="assets/img/gallery/g9-thumb.jpg" alt="endorfine live auf der Bühne" loading="lazy"></a>
-      <a href="assets/img/gallery/g10.jpg" class="gal-item reveal"><img src="assets/img/gallery/g10-thumb.jpg" alt="endorfine live beim Hügelfestival" loading="lazy"></a>
-      <a href="assets/img/gallery/g11.jpg" class="gal-item reveal"><img src="assets/img/gallery/g11-thumb.jpg" alt="endorfine live" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -548,14 +307,6 @@ This moment</pre>
     <a href="datenschutz.html"><span data-l="de">Datenschutz</span><span data-l="en">Privacy</span></a>
   </nav>
 </footer>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" hidden>
-  <button class="lb-close" id="lbClose" aria-label="Schließen">×</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Vorheriges Bild">‹</button>
-  <img src="" alt="" id="lbImg">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Nächstes Bild">›</button>
-</div>
 
 <script src="js/main.js"></script>
 </body>
