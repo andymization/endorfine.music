@@ -105,8 +105,8 @@
   <div class="wrap">
     <h2 class="sec-title reveal"><span data-l="de">Musik</span><span data-l="en">Music</span></h2>
     <p class="sec-sub reveal">
-      <span data-l="de">Vier eigene Kompositionen, aufgenommen 2002 — auf allen Plattformen. Einfach antippen und im Lieblingsdienst weiterhören.</span>
-      <span data-l="en">Four original compositions, recorded in 2002 — on all platforms. Tap and continue in your favourite service.</span>
+      <span data-l="de">Vier eigene Kompositionen, aufgenommen 2002. Wähl deinen Streaming-Dienst — die Songtitel führen dich direkt dorthin.</span>
+      <span data-l="en">Four original compositions, recorded in 2002. Pick your streaming service — the track titles take you straight there.</span>
     </p>
 
     <div class="album reveal">
@@ -118,26 +118,29 @@
           <h3><img src="assets/img/mosaic-script.png" alt="Mosaic of Songs" width="775" height="161"></h3>
           <p class="album-meta">EP · 2002 · <span data-l="de">4 Titel</span><span data-l="en">4 tracks</span></p>
         </div>
-        <ol class="album-tracks">
-          <li>When Sense Meets Sensibility <small>(Radio Edit)</small></li>
-          <li>Thank You</li>
-          <li>Mosaic of Songs</li>
-          <li>Twinkle of an Eye</li>
-        </ol>
         <p class="platforms-label">
-          <span data-l="de">Jetzt streamen:</span>
-          <span data-l="en">Stream now:</span>
+          <span data-l="de">Dein Streaming-Dienst:</span>
+          <span data-l="en">Your streaming service:</span>
         </p>
-        <div class="platform-grid">
-          <a class="platform platform-spotify" href="https://open.spotify.com/album/18BYh9EEyXQy0uVqQ6r5eS" target="_blank" rel="noopener">Spotify</a>
-          <a class="platform" href="https://music.apple.com/de/album/1760308488" target="_blank" rel="noopener">Apple&nbsp;Music</a>
-          <a class="platform" href="https://music.youtube.com/playlist?list=OLAK5uy_nRvWJy2cDA9tz8B856mHMKkKHnALqNb88" target="_blank" rel="noopener">YouTube&nbsp;Music</a>
-          <a class="platform" href="https://music.amazon.com/albums/B0DBR2V2N7" target="_blank" rel="noopener">Amazon&nbsp;Music</a>
-          <a class="platform" href="https://tidal.com/album/378540836" target="_blank" rel="noopener">Tidal</a>
-          <a class="platform" href="https://www.deezer.com/album/622931781" target="_blank" rel="noopener">Deezer</a>
-          <a class="platform" href="https://soundcloud.com/endorfine-music/sets/mosaic-of-songs" target="_blank" rel="noopener">SoundCloud</a>
+        <div class="platform-grid" id="platformGrid">
+          <button class="platform" data-p="amazon">Amazon&nbsp;Music</button>
+          <button class="platform" data-p="apple">Apple&nbsp;Music</button>
+          <button class="platform" data-p="deezer">Deezer</button>
+          <button class="platform" data-p="soundcloud">SoundCloud</button>
+          <button class="platform" data-p="spotify">Spotify</button>
+          <button class="platform" data-p="tidal">Tidal</button>
+          <button class="platform" data-p="youtube">YouTube&nbsp;Music</button>
           <a class="platform" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener"><span data-l="de">Alle Links</span><span data-l="en">All links</span></a>
         </div>
+        <ol class="album-tracks" id="albumTracks">
+          <li><a class="track-link" data-t="0" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener">When Sense Meets Sensibility <small>(Radio Edit)</small></a></li>
+          <li><a class="track-link" data-t="1" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener">Thank You</a></li>
+          <li><a class="track-link" data-t="2" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener">Mosaic of Songs</a></li>
+          <li><a class="track-link" data-t="3" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener">Twinkle of an Eye</a></li>
+        </ol>
+        <a class="album-open" id="albumOpen" href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener">
+          <span data-l="de">Ganzes Album öffnen auf</span><span data-l="en">Open the full album on</span>&nbsp;<span id="albumOpenName">…</span> →
+        </a>
       </div>
     </div>
   </div>
@@ -308,8 +311,6 @@
     </p>
     <a class="contact-mail reveal" href="mailto:info@endorfine.music">info@endorfine.music</a>
     <div class="contact-links reveal">
-      <a href="https://open.spotify.com/artist/0eKpybklYKcPWMH3hmJPvS" target="_blank" rel="noopener">Spotify</a>
-      <a href="https://soundcloud.com/endorfine-music" target="_blank" rel="noopener">SoundCloud</a>
       <a href="https://listen.music-hub.com/MazClq" target="_blank" rel="noopener"><span data-l="de">Alle Plattformen</span><span data-l="en">All platforms</span></a>
     </div>
   </div>

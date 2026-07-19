@@ -332,12 +332,47 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   counter-reset: track;
   margin-bottom: 2rem;
 }
+.album-tracks {
+  margin-top: 1.6rem;
+}
 .album-tracks li {
   counter-increment: track;
-  padding: 0.5rem 0.2rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
+  display: flex;
+  align-items: baseline;
 }
+.album-tracks li::before { padding-top: 0.55rem; }
+.album-tracks .track-link { flex: 1; }
+.track-link {
+  display: block;
+  padding: 0.55rem 0.2rem;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s, background 0.2s;
+  border-radius: 6px;
+}
+.track-link::after {
+  content: " ↗";
+  color: var(--red);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.track-link:hover {
+  color: var(--text);
+  background: rgba(196, 48, 43, 0.08);
+}
+.track-link:hover::after { opacity: 1; }
+.album-open {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--red-bright);
+  transition: color 0.2s;
+}
+.album-open:hover { color: var(--text); }
 .album-tracks li:last-child { border-bottom: 1px solid var(--line); }
 .album-tracks li::before {
   content: counter(track);
@@ -362,6 +397,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   gap: 0.7rem;
 }
 .platform {
+  font-family: var(--sans);
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 400;
@@ -372,6 +408,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   padding: 0.55rem 1.25rem;
   transition: all 0.25s;
   background: rgba(255, 255, 255, 0.015);
+  cursor: pointer;
 }
 .platform:hover {
   color: var(--text);
@@ -379,10 +416,12 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(196, 48, 43, 0.25);
 }
-.platform-spotify {
+.platform.selected {
   border-color: var(--red);
+  background: rgba(196, 48, 43, 0.16);
   color: var(--text);
   font-weight: 600;
+  box-shadow: 0 4px 18px rgba(196, 48, 43, 0.3);
 }
 
 /* ---------- Parallax divider ---------- */

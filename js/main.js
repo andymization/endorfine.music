@@ -90,6 +90,103 @@
     reveals.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  /* ---------- Streaming platform selector ---------- */
+  var PLATFORMS = {
+    amazon: {
+      name: 'Amazon Music',
+      album: 'https://music.amazon.com/albums/B0DBR2V2N7',
+      tracks: null
+    },
+    apple: {
+      name: 'Apple Music',
+      album: 'https://music.apple.com/de/album/1760308488',
+      tracks: [
+        'https://music.apple.com/de/album/when-sense-meets-sensibility-radio-edit/1760308488?i=1760308827',
+        'https://music.apple.com/de/album/thank-you/1760308488?i=1760308834',
+        'https://music.apple.com/de/album/mosaic-of-songs/1760308488?i=1760308842',
+        'https://music.apple.com/de/album/twinkle-of-an-eye/1760308488?i=1760308847'
+      ]
+    },
+    deezer: {
+      name: 'Deezer',
+      album: 'https://www.deezer.com/album/622931781',
+      tracks: [
+        'https://www.deezer.com/track/2926925941',
+        'https://www.deezer.com/track/2926925951',
+        'https://www.deezer.com/track/2926925961',
+        'https://www.deezer.com/track/2926925971'
+      ]
+    },
+    soundcloud: {
+      name: 'SoundCloud',
+      album: 'https://soundcloud.com/endorfine-music/sets/mosaic-of-songs',
+      tracks: [
+        'https://soundcloud.com/endorfine-music/when-sense-meets-sensibility',
+        'https://soundcloud.com/endorfine-music/thank-you',
+        'https://soundcloud.com/endorfine-music/mosaic-of-songs',
+        'https://soundcloud.com/endorfine-music/twinkle-of-an-eye'
+      ]
+    },
+    spotify: {
+      name: 'Spotify',
+      album: 'https://open.spotify.com/album/18BYh9EEyXQy0uVqQ6r5eS',
+      tracks: [
+        'https://open.spotify.com/track/2Z9n53jFDSq2627arKrwHy',
+        'https://open.spotify.com/track/5G7O2NOnVTclz5SG3cpUo0',
+        'https://open.spotify.com/track/0th0FC1iHzNWWJNDiJMd1z',
+        'https://open.spotify.com/track/6a0ztBpLjJupsxyH3Ss63O'
+      ]
+    },
+    tidal: {
+      name: 'Tidal',
+      album: 'https://tidal.com/album/378540836',
+      tracks: null
+    },
+    youtube: {
+      name: 'YouTube Music',
+      album: 'https://music.youtube.com/playlist?list=OLAK5uy_nRvWJy2cDA9tz8B856mHMKkKHnALqNb88',
+      tracks: null
+    }
+  };
+
+  var platformGrid = document.getElementById('platformGrid');
+  if (platformGrid) {
+    var chips = [].slice.call(platformGrid.querySelectorAll('button.platform'));
+    var trackLinks = [].slice.call(document.querySelectorAll('#albumTracks .track-link'));
+    var albumOpen = document.getElementById('albumOpen');
+    var albumOpenName = document.getElementById('albumOpenName');
+
+    var selectPlatform = function (key) {
+      var p = PLATFORMS[key];
+      if (!p) return;
+      chips.forEach(function (c) {
+        var on = c.getAttribute('data-p') === key;
+        c.classList.toggle('selected', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      trackLinks.forEach(function (a, i) {
+        a.href = (p.tracks && p.tracks[i]) || p.album;
+      });
+      albumOpen.href = p.album;
+      albumOpenName.textContent = p.name;
+      try { localStorage.setItem('endorfine-platform', key); } catch (e) {}
+    };
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        selectPlatform(c.getAttribute('data-p'));
+      });
+    });
+
+    var storedP = null;
+    try { storedP = localStorage.getItem('endorfine-platform'); } catch (e) {}
+    var ua = navigator.userAgent || '';
+    var initialP = (storedP && PLATFORMS[storedP]) ? storedP
+      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple'
+        : (/Android/.test(ua) ? 'youtube' : 'spotify'));
+    selectPlatform(initialP);
+  }
+
   /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
