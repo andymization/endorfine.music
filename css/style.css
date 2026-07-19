@@ -262,7 +262,9 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--text);
-  margin-bottom: 0.4rem;
+  /* Linie klebt am Wort, danach großzügiger Abstand zum Inhalt
+     (gleiches Maß wie zwischen Bio-Ende und Timeline) */
+  margin-bottom: 3.4rem;
 }
 /* Rote Linie unterm Titel = Scroll-Fortschritt durch die Sektion
    (JS setzt --p auf 0–100). Länge = Wortbreite, daher füllt sie sich
@@ -633,21 +635,6 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   transition: color 0.3s, border-color 0.3s;
 }
 .contact-mail:hover { color: var(--red-bright); border-color: var(--red-bright); }
-.contact-links {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.contact-links a {
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--muted);
-  transition: color 0.25s;
-}
-.contact-links a:hover { color: var(--red-bright); }
 
 /* ---------- Footer ---------- */
 .footer {
