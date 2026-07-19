@@ -392,9 +392,9 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   margin-bottom: 0.9rem;
 }
 .platform-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
 }
 .platform {
   font-family: var(--sans);
@@ -405,7 +405,9 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.55rem 1.25rem;
+  padding: 0.55rem 0.5rem;
+  text-align: center;
+  white-space: nowrap;
   transition: all 0.25s;
   background: rgba(255, 255, 255, 0.015);
   cursor: pointer;
