@@ -65,11 +65,15 @@
     }
   });
 
-  /* ---------- Parallax + Sektions-Progressbars ---------- */
+  /* ---------- Parallax + Sektions-Progressbars + Nav-Logo ---------- */
   var layers = [].slice.call(document.querySelectorAll('.parallax'));
   var progressTitles = [].slice.call(document.querySelectorAll('.section .sec-title')).map(function (t) {
     return { title: t, section: t.closest('.section') };
   });
+  /* Überall dort, wo der endorfine-Schriftzug im Bild ist, soll das
+     Nav-Logo oben links verschwinden — scrollgekoppelt, stufenlos. */
+  var navLogoImg = document.querySelector('.nav-logo img');
+  var logoSpots = [].slice.call(document.querySelectorAll('.hero-logo img, .album-cover img, .footer-logo img'));
   if (!reducedMotion && (layers.length || progressTitles.length)) {
     var ticking = false;
     var update = function () {
@@ -89,6 +93,20 @@
         p = Math.max(0, Math.min(1, p));
         pt.title.style.setProperty('--p', (p * 100).toFixed(1));
       });
+      if (navLogoImg) {
+        var pad = 140; /* weichere Übergangszone um die Schriftzüge */
+        var maxFrac = 0;
+        logoSpots.forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          var height = r.height + pad * 2;
+          if (height <= 0) return;
+          var overlap = Math.min(r.bottom + pad, vh) - Math.max(r.top - pad, 0);
+          if (overlap > 0) maxFrac = Math.max(maxFrac, Math.min(1, overlap / height));
+        });
+        var navO = 1 - maxFrac;
+        navLogoImg.style.opacity = navO.toFixed(3);
+        navLogoImg.parentElement.style.pointerEvents = navO < 0.15 ? 'none' : '';
+      }
     };
     var onScroll = function () {
       if (!ticking) {
