@@ -245,6 +245,27 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   transform: translateY(-2px);
 }
 
+/* Scroll-Pfeil: nur auf kleinen Screens (dort ist das Menü im Burger versteckt) */
+.hero-scroll {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  z-index: 2;
+  display: none;
+  color: var(--text);
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+  animation: heroBob 2.2s ease-in-out infinite;
+}
+.hero-scroll svg { width: 34px; height: 34px; display: block; }
+@keyframes heroBob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 9px); }
+}
+@media (max-width: 720px) {
+  .hero-scroll { display: block; }
+}
+
 /* ---------- Sections ---------- */
 .section { position: relative; padding: 6.5rem 0; }
 .section-alt { background: var(--bg-alt); }
@@ -683,6 +704,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .parallax { transform: none !important; }
+  .hero-scroll { animation: none; transform: translateX(-50%); }
 }
 
 /* ---------- Responsive ---------- */
