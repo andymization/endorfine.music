@@ -162,8 +162,8 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(11,7,8,0.75) 0%, rgba(11,7,8,0.35) 30%, rgba(126,29,26,0.30) 62%, var(--bg) 100%),
-    radial-gradient(ellipse at center, transparent 30%, rgba(11,7,8,0.65) 100%);
+    linear-gradient(180deg, rgba(11,7,8,0.55) 0%, rgba(11,7,8,0.12) 30%, rgba(126,29,26,0.12) 62%, var(--bg) 100%),
+    radial-gradient(ellipse at center, transparent 45%, rgba(11,7,8,0.45) 100%);
 }
 .hero-grain, .divider::after {
   position: absolute;
@@ -705,4 +705,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   .gigs td:first-child { font-size: 0.8rem; }
   html[data-lang="de"] .gigs td[data-l="de"],
   html[data-lang="en"] .gigs td[data-l="en"] { display: block; }
+  /* inaktive Sprache auch mobil ausblenden (schlägt .gigs td { display:block }) */
+  html[data-lang="de"] .gigs td[data-l="en"],
+  html[data-lang="en"] .gigs td[data-l="de"] { display: none; }
 }
