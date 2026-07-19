@@ -197,9 +197,10 @@
     var storedP = null;
     try { storedP = localStorage.getItem('endorfine-platform'); } catch (e) {}
     var ua = navigator.userAgent || '';
+    /* Apple-Geräte -> Apple Music, sonst Spotify (größter Marktanteil);
+       eine einmal getroffene Wahl (localStorage) gewinnt immer. */
     var initialP = (storedP && PLATFORMS[storedP]) ? storedP
-      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple'
-        : (/Android/.test(ua) ? 'youtube' : 'spotify'));
+      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple' : 'spotify');
     selectPlatform(initialP);
   }
 
