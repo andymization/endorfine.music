@@ -206,6 +206,22 @@
     selectPlatform(initialP);
   }
 
+  /* ---------- Zitat-Banner: sanfte Rotation ---------- */
+  var dividerQuote = document.querySelector('.divider-quote');
+  if (dividerQuote && !reducedMotion) {
+    var dqs = [].slice.call(dividerQuote.querySelectorAll('.dq'));
+    if (dqs.length > 1) {
+      dividerQuote.classList.add('rotating');
+      var dqi = 0;
+      dqs[dqi].classList.add('active');
+      setInterval(function () {
+        dqs[dqi].classList.remove('active');
+        dqi = (dqi + 1) % dqs.length;
+        dqs[dqi].classList.add('active');
+      }, 8000);
+    }
+  }
+
   /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

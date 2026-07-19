@@ -461,6 +461,16 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   text-transform: uppercase;
   color: var(--red-bright);
 }
+/* Rotierende Zitate: alle übereinander, eins sichtbar, Crossfade */
+.divider-quote { display: grid; }
+.dq {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.dq:first-child { opacity: 1; } /* Fallback ohne JS / mit reduzierter Bewegung */
+.divider-quote.rotating .dq:first-child { opacity: 0; }
+.divider-quote.rotating .dq.active { opacity: 1; }
 
 /* ---------- Timeline ---------- */
 .bio p + p { margin-top: 1.1rem; }
