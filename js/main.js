@@ -47,9 +47,12 @@
     }
   });
 
-  /* ---------- Parallax ---------- */
+  /* ---------- Parallax + Sektions-Progressbars ---------- */
   var layers = [].slice.call(document.querySelectorAll('.parallax'));
-  if (!reducedMotion && layers.length) {
+  var progressTitles = [].slice.call(document.querySelectorAll('.section .sec-title')).map(function (t) {
+    return { title: t, section: t.closest('.section') };
+  });
+  if (!reducedMotion && (layers.length || progressTitles.length)) {
     var ticking = false;
     var update = function () {
       ticking = false;
@@ -61,6 +64,12 @@
         var speed = parseFloat(el.getAttribute('data-speed')) || 0.3;
         var progress = (rect.top + rect.height / 2 - vh / 2) * -1;
         el.style.transform = 'translate3d(0,' + (progress * speed).toFixed(1) + 'px,0)';
+      });
+      progressTitles.forEach(function (pt) {
+        var rect = pt.section.getBoundingClientRect();
+        var p = (vh - rect.top) / rect.height;
+        p = Math.max(0, Math.min(1, p));
+        pt.title.style.setProperty('--p', (p * 100).toFixed(1));
       });
     };
     var onScroll = function () {

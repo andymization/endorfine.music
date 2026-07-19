@@ -244,24 +244,6 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   color: var(--red-bright);
   transform: translateY(-2px);
 }
-.hero-scroll {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-.hero-scroll-line {
-  display: block;
-  width: 1px;
-  height: 52px;
-  background: linear-gradient(var(--red-bright), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%, 100% { transform: scaleY(1); opacity: 1; }
-  50% { transform: scaleY(0.55); opacity: 0.4; }
-}
 
 /* ---------- Sections ---------- */
 .section { position: relative; padding: 6.5rem 0; }
@@ -281,14 +263,17 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   color: var(--text);
   margin-bottom: 0.4rem;
 }
+/* Rote Linie = Scroll-Fortschritt durch die Sektion (JS setzt --p auf 0–100) */
 .sec-title::after {
   content: "";
   display: block;
-  width: 84px;
+  width: 110px;
   height: 3px;
   margin-top: 0.7rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--red), transparent);
+  background: linear-gradient(90deg,
+    var(--red) calc(var(--p, 38) * 1%),
+    var(--line) calc(var(--p, 38) * 1%));
 }
 .sec-sub {
   color: var(--muted);
@@ -618,7 +603,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   background: linear-gradient(180deg, var(--bg) 0%, transparent 35%, transparent 70%, var(--bg) 100%);
 }
 .section-contact .wrap { position: relative; }
-.section-contact .sec-title::after { margin-left: auto; margin-right: auto; background: linear-gradient(90deg, transparent, var(--red), transparent); }
+.section-contact .sec-title::after { margin-left: auto; margin-right: auto; }
 .section-contact .sec-sub { margin-left: auto; margin-right: auto; }
 .contact-mail {
   display: inline-block;
@@ -696,7 +681,6 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .parallax { transform: none !important; }
-  .hero-scroll-line { animation: none; }
 }
 
 /* ---------- Responsive ---------- */
