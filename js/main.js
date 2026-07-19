@@ -199,12 +199,10 @@
     var storedP = null;
     try { storedP = localStorage.getItem('endorfine-platform'); } catch (e) {}
     var ua = navigator.userAgent || '';
-    /* Gespeicherte Wahl gewinnt; Apple-Geräte starten bei Apple Music,
-       alle anderen bekommen pro Besuch einen zufälligen Dienst. */
-    var keys = Object.keys(PLATFORMS);
+    /* Gespeicherte Wahl gewinnt; sonst fix: Apple-Geräte -> Apple Music,
+       alle anderen -> Spotify. */
     var initialP = (storedP && PLATFORMS[storedP]) ? storedP
-      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple'
-        : keys[Math.floor(Math.random() * keys.length)]);
+      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple' : 'spotify');
     selectPlatform(initialP);
   }
 

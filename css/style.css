@@ -255,6 +255,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
 }
 .wrap-narrow { max-width: 52rem; }
 .sec-title {
+  display: inline-block;
   font-weight: 600;
   font-size: clamp(1.9rem, 4.5vw, 2.9rem);
   line-height: 1.1;
@@ -263,13 +264,16 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   color: var(--text);
   margin-bottom: 0.4rem;
 }
-/* Rote Linie = Scroll-Fortschritt durch die Sektion (JS setzt --p auf 0–100) */
+/* Rote Linie unterm Titel = Scroll-Fortschritt durch die Sektion
+   (JS setzt --p auf 0–100). Länge = Wortbreite, daher füllt sie sich
+   bei längeren Titeln entsprechend schneller. */
 .sec-title::after {
   content: "";
   display: block;
-  width: 110px;
-  height: 3px;
-  margin-top: 0.7rem;
+  /* 0.16em Ausgleich: letter-spacing hängt hinter dem letzten Buchstaben nach */
+  width: calc(100% - 0.16em);
+  height: 2px;
+  margin-top: 0.3rem;
   border-radius: 999px;
   background: linear-gradient(90deg,
     var(--red) calc(var(--p, 38) * 1%),
