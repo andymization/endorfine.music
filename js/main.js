@@ -236,7 +236,7 @@
         dqs[dqi].classList.remove('active');
         dqi = (dqi + 1) % dqs.length;
         dqs[dqi].classList.add('active');
-      }, 8000);
+      }, 14000);
     }
   }
 
