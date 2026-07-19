@@ -607,8 +607,8 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   position: absolute;
   inset: -20% 0;
   background-size: cover;
-  background-position: center 70%;
-  opacity: 0.2;
+  background-position: center 42%;
+  opacity: 0.32;
   will-change: transform;
 }
 .section-contact::before {
