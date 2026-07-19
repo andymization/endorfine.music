@@ -5,10 +5,23 @@
   var doc = document.documentElement;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Reload landet immer auf der Landingpage ---------- */
+  /* ---------- Reload landet immer auf der Landingpage ----------
+     Browser stellen die Scroll-Position teils erst nach dem Laden
+     wieder her — daher zusätzlich bei load/pageshow erzwingen und
+     das Smooth-Scrolling währenddessen kurz abschalten. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  window.scrollTo(0, 0);
+  var forceTop = function () {
+    doc.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    requestAnimationFrame(function () {
+      window.scrollTo(0, 0);
+      doc.style.scrollBehavior = '';
+    });
+  };
+  forceTop();
+  window.addEventListener('load', forceTop);
+  window.addEventListener('pageshow', forceTop);
 
   /* ---------- Language toggle ---------- */
   var langToggle = document.getElementById('langToggle');
