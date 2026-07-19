@@ -185,22 +185,26 @@
         heroPlatform.href = p.album;
         heroNames.forEach(function (n) { n.textContent = p.name; });
       }
-      try { localStorage.setItem('endorfine-platform', key); } catch (e) {}
     };
 
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
-        selectPlatform(c.getAttribute('data-p'));
+        var key = c.getAttribute('data-p');
+        selectPlatform(key);
+        /* Nur die bewusste Wahl wird gemerkt — die Auto-Vorauswahl nicht. */
+        try { localStorage.setItem('endorfine-platform', key); } catch (e) {}
       });
     });
 
     var storedP = null;
     try { storedP = localStorage.getItem('endorfine-platform'); } catch (e) {}
     var ua = navigator.userAgent || '';
-    /* Apple-Geräte -> Apple Music, sonst Spotify (größter Marktanteil);
-       eine einmal getroffene Wahl (localStorage) gewinnt immer. */
+    /* Gespeicherte Wahl gewinnt; Apple-Geräte starten bei Apple Music,
+       alle anderen bekommen pro Besuch einen zufälligen Dienst. */
+    var keys = Object.keys(PLATFORMS);
     var initialP = (storedP && PLATFORMS[storedP]) ? storedP
-      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple' : 'spotify');
+      : (/iPhone|iPad|iPod|Macintosh/.test(ua) ? 'apple'
+        : keys[Math.floor(Math.random() * keys.length)]);
     selectPlatform(initialP);
   }
 
