@@ -5,6 +5,11 @@
   var doc = document.documentElement;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Reload landet immer auf der Landingpage ---------- */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo(0, 0);
+
   /* ---------- Language toggle ---------- */
   var langToggle = document.getElementById('langToggle');
 
