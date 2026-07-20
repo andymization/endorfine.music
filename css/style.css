@@ -586,7 +586,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   /* Grafisches Anführungszeichen als eigene Spalte, Text daneben */
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: 0.9rem;
+  column-gap: 0.3rem;
 }
 .quote:nth-child(odd) { transform: rotate(-0.8deg); }
 .quote:nth-child(even) { transform: rotate(0.7deg); }
@@ -599,6 +599,8 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   line-height: 0.72;
   color: var(--red);
   opacity: 0.75;
+  /* Georgia hat rechts vom Zeichen eingebauten Weißraum — ausgleichen */
+  margin-right: -0.55rem;
 }
 .quote p {
   position: relative;
