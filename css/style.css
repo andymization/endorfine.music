@@ -604,25 +604,25 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   margin-right: -0.35rem;
 }
 .quote p {
-  position: relative;
   grid-column: 2;
   font-style: italic;
   font-size: 0.96rem;
   color: var(--text);
-  padding-right: 1.5rem;
-  padding-bottom: 0.15rem;
+  padding-right: 1.9rem;
 }
-/* Schließendes Zeichen: fest an der Ecke des Absatzes verankert
-   (nicht im Textfluss) — dadurch immer gleiche Größe/Position wie
-   das öffnende Zeichen, unabhängig von Zeilenumbrüchen. Sitzt nah an
-   der letzten Zeile, mit wortspatiumgroßem statt riesigem Abstand. */
-.quote p::after {
+.quote cite { padding-right: 1.9rem; }
+/* Schließendes Zeichen: Eckflourish der ganzen Karte (wie das
+   öffnende oben links) — NICHT an die letzte Textzeile gekoppelt.
+   Bei kurzen letzten Zeilen wirkt ein textgekoppeltes Zeichen sonst
+   wie „in der falschen Zeile", weil CSS keine letzte-Zeile-Auswahl
+   kennt. Als feste Kartenecke ist es unabhängig von Zeilenumbrüchen
+   immer korrekt. */
+.quote::after {
   content: "”";
   position: absolute;
-  right: -0.25rem;
-  bottom: -0.05rem;
+  right: 1.1rem;
+  bottom: 0.7rem;
   font-family: Georgia, serif;
-  font-style: normal;
   font-size: 3.4rem;
   line-height: 0.72;
   color: var(--red);
