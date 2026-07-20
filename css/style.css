@@ -608,26 +608,23 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   font-style: italic;
   font-size: 0.96rem;
   color: var(--text);
-  padding-right: 1.9rem;
+  /* Safari/iOS: hängt das schließende Zeichen sauber ans Zeilenende,
+     ohne die Textbreite zu beeinflussen (progressive enhancement) */
+  hanging-punctuation: allow-end;
 }
-.quote cite { padding-right: 1.9rem; }
-/* Schließendes Zeichen: Eckflourish der ganzen Karte (wie das
-   öffnende oben links) — NICHT an die letzte Textzeile gekoppelt.
-   Bei kurzen letzten Zeilen wirkt ein textgekoppeltes Zeichen sonst
-   wie „in der falschen Zeile", weil CSS keine letzte-Zeile-Auswahl
-   kennt. Als feste Kartenecke ist es unabhängig von Zeilenumbrüchen
-   immer korrekt. */
-.quote::after {
-  content: "”";
-  position: absolute;
-  right: 1.1rem;
-  bottom: 0.7rem;
+/* Schließendes Zeichen: direkt im Textfluss, ein Leerzeichen nach
+   dem letzten Wort des Zitats — nicht nach Zeitung/Datum, und nicht
+   groß genug, um Zeilenumbrüche zu sprengen (anders als das große
+   öffnende Zeichen, das als eigenständige Grafik in Spalte 1 sitzt). */
+.quote p::after {
+  content: "\00a0”";
   font-family: Georgia, serif;
-  font-size: 3.4rem;
-  line-height: 0.72;
+  font-style: normal;
+  font-size: 1.7em;
+  line-height: 0;
+  vertical-align: -0.32em;
   color: var(--red);
-  opacity: 0.75;
-  pointer-events: none;
+  opacity: 0.85;
 }
 .quote cite {
   grid-column: 2;
