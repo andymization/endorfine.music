@@ -74,6 +74,7 @@
      Nav-Logo oben links verschwinden — scrollgekoppelt, stufenlos. */
   var navLogoImg = document.querySelector('.nav-logo img');
   var logoSpots = [].slice.call(document.querySelectorAll('.hero-logo img, .album-cover img, .footer-logo img'));
+  var heroScrollEl = document.querySelector('.hero-scroll');
   if (!reducedMotion && (layers.length || progressTitles.length)) {
     var ticking = false;
     var update = function () {
@@ -106,6 +107,12 @@
         var navO = 1 - maxFrac;
         navLogoImg.style.opacity = navO.toFixed(3);
         navLogoImg.parentElement.style.pointerEvents = navO < 0.15 ? 'none' : '';
+      }
+      if (heroScrollEl) {
+        /* Scroll-Pfeil über die ersten ~35% Viewport-Höhe ausblenden */
+        var so = 1 - Math.min(1, window.scrollY / (vh * 0.35));
+        heroScrollEl.style.opacity = (0.85 * so).toFixed(3);
+        heroScrollEl.style.pointerEvents = so < 0.2 ? 'none' : '';
       }
     };
     var onScroll = function () {
