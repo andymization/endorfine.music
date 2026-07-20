@@ -5,23 +5,36 @@
   var doc = document.documentElement;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Reload landet immer auf der Landingpage ----------
-     Browser stellen die Scroll-Position teils erst nach dem Laden
-     wieder her — daher zusätzlich bei load/pageshow erzwingen und
-     das Smooth-Scrolling währenddessen kurz abschalten. */
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  var forceTop = function () {
-    doc.style.scrollBehavior = 'auto';
-    window.scrollTo(0, 0);
-    requestAnimationFrame(function () {
+  /* ---------- Reload landet oben, Zurück-Navigation nicht ----------
+     Nur bei einem echten Reload (Cmd+R) soll die Seite oben starten.
+     Beim Zurückkommen per Browser-"Zurück" (z. B. von Impressum/
+     Datenschutz) soll die vorherige Scroll-Position erhalten bleiben
+     — dafür braucht scrollRestoration den Browser-Standard 'auto'. */
+  var isBackForward = false;
+  try {
+    var navEntry = performance.getEntriesByType('navigation')[0];
+    isBackForward = navEntry && navEntry.type === 'back_forward';
+  } catch (e) {}
+
+  if (!isBackForward) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    var forceTop = function () {
+      doc.style.scrollBehavior = 'auto';
       window.scrollTo(0, 0);
-      doc.style.scrollBehavior = '';
+      requestAnimationFrame(function () {
+        window.scrollTo(0, 0);
+        doc.style.scrollBehavior = '';
+      });
+    };
+    forceTop();
+    window.addEventListener('load', forceTop);
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) forceTop(); /* bfcache-Restore ist faktisch Zurück-Navigation */
     });
-  };
-  forceTop();
-  window.addEventListener('load', forceTop);
-  window.addEventListener('pageshow', forceTop);
+  } else if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'auto';
+  }
 
   /* ---------- Language toggle ---------- */
   var langToggle = document.getElementById('langToggle');
