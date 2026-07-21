@@ -617,7 +617,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
    groß genug, um Zeilenumbrüche zu sprengen (anders als das große
    öffnende Zeichen, das als eigenständige Grafik in Spalte 1 sitzt). */
 .quote p::after {
-  content: "\00a0”";
+  content: "”";
   font-family: Georgia, serif;
   font-style: normal;
   font-size: 1.4em;
@@ -625,6 +625,10 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   vertical-align: -0.6em;
   color: var(--red);
   opacity: 0.85;
+  /* Abstand in rem (unabhängig von der vergrößerten Zeichengröße
+     oben), damit die Lücke wie ein normales Leerzeichen wirkt —
+     wie beim öffnenden Zeichen */
+  margin-left: 0.12rem;
 }
 .quote cite {
   grid-column: 2;
