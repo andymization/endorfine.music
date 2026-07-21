@@ -620,9 +620,9 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   content: "\00a0”";
   font-family: Georgia, serif;
   font-style: normal;
-  font-size: 1.7em;
+  font-size: 1.4em;
   line-height: 0;
-  vertical-align: -0.32em;
+  vertical-align: -0.6em;
   color: var(--red);
   opacity: 0.85;
 }
