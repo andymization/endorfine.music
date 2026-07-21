@@ -631,13 +631,13 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   /* gleiche Größe wie das öffnende Zeichen (2em der Textgröße) */
   font-size: 2em;
   line-height: 0;
-  vertical-align: -0.85em;
+  vertical-align: -0.65em;
   color: var(--red);
   opacity: 0.85;
   /* Abstand in rem (unabhängig von der Zeichengröße), damit die
      Lücke wie ein normales Leerzeichen wirkt — wie beim öffnenden
      Zeichen */
-  margin-left: 0.14rem;
+  margin-left: 0.06rem;
 }
 .quote cite {
   grid-column: 2;
