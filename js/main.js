@@ -87,7 +87,6 @@
      Nav-Logo oben links verschwinden — scrollgekoppelt, stufenlos. */
   var navLogoImg = document.querySelector('.nav-logo img');
   var logoSpots = [].slice.call(document.querySelectorAll('.hero-logo img, .album-cover img, .footer-logo img'));
-  var heroScrollEl = document.querySelector('.hero-scroll');
   if (!reducedMotion && (layers.length || progressTitles.length)) {
     var ticking = false;
     var update = function () {
@@ -121,12 +120,6 @@
         navLogoImg.style.opacity = navO.toFixed(3);
         navLogoImg.parentElement.style.pointerEvents = navO < 0.15 ? 'none' : '';
       }
-      if (heroScrollEl) {
-        /* Scroll-Pfeil über die ersten ~35% Viewport-Höhe ausblenden */
-        var so = 1 - Math.min(1, window.scrollY / (vh * 0.35));
-        heroScrollEl.style.opacity = (0.85 * so).toFixed(3);
-        heroScrollEl.style.pointerEvents = so < 0.2 ? 'none' : '';
-      }
     };
     var onScroll = function () {
       if (!ticking) {
@@ -137,6 +130,23 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     update();
+  }
+
+  /* ---------- Seitenweiter Scroll-Indikator ----------
+     Bleibt sichtbar, solange unterhalb noch Inhalt folgt; verschwindet
+     erst am tatsächlichen Seitenende (nicht nur nach dem Hero). */
+  var scrollIndicator = document.getElementById('scrollIndicator');
+  if (scrollIndicator) {
+    var updateIndicator = function () {
+      var distanceToBottom = doc.scrollHeight - (window.scrollY + window.innerHeight);
+      scrollIndicator.classList.toggle('at-bottom', distanceToBottom < 48);
+    };
+    window.addEventListener('scroll', updateIndicator, { passive: true });
+    window.addEventListener('resize', updateIndicator, { passive: true });
+    updateIndicator();
+    scrollIndicator.addEventListener('click', function () {
+      window.scrollBy({ top: window.innerHeight * 0.85, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
   }
 
   /* ---------- Reveal on scroll ---------- */

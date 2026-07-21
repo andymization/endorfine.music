@@ -245,25 +245,31 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   transform: translateY(-2px);
 }
 
-/* Scroll-Pfeil: nur auf kleinen Screens (dort ist das Menü im Burger versteckt) */
-.hero-scroll {
-  position: absolute;
+/* Seitenweiter "mehr Inhalt"-Indikator: bleibt sichtbar, solange noch
+   Inhalt unterhalb folgt, verschwindet erst am tatsächlichen
+   Seitenende (wie das Scroll-Ende-Verhalten im Claude-Chat). */
+.scroll-indicator {
+  position: fixed;
   bottom: 1.4rem;
   left: 50%;
-  z-index: 2;
-  display: none;
+  z-index: 60;
+  display: flex;
+  border: none;
+  background: none;
+  padding: 0.6rem;
+  margin: 0;
+  cursor: pointer;
   color: var(--text);
   opacity: 0.85;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
   animation: heroBob 2.2s ease-in-out infinite;
+  transition: opacity 0.4s;
 }
-.hero-scroll svg { width: 34px; height: 34px; display: block; }
+.scroll-indicator svg { width: 34px; height: 34px; display: block; }
+.scroll-indicator.at-bottom { opacity: 0; pointer-events: none; }
 @keyframes heroBob {
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, 9px); }
-}
-@media (max-width: 720px) {
-  .hero-scroll { display: block; }
 }
 
 /* ---------- Sections ---------- */
@@ -595,13 +601,15 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   content: "“";
   grid-column: 1;
   font-family: Georgia, serif;
-  font-size: 3.4rem;
+  /* em statt rem: Größe folgt der Textgröße des Zitats, nicht einer
+     fest vorgegebenen Grafikgröße — genau wie das schließende Zeichen */
+  font-size: 2em;
   line-height: 0.72;
   color: var(--red);
   opacity: 0.75;
   /* Georgia hat rechts vom Zeichen eingebauten Weißraum — teilweise
      ausgleichen, sodass am Ende ein wortspatiumgroßer Abstand bleibt */
-  margin-right: -0.35rem;
+  margin-right: -0.2rem;
 }
 .quote p {
   grid-column: 2;
@@ -620,15 +628,16 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   content: "”";
   font-family: Georgia, serif;
   font-style: normal;
-  font-size: 1.4em;
+  /* gleiche Größe wie das öffnende Zeichen (2em der Textgröße) */
+  font-size: 2em;
   line-height: 0;
-  vertical-align: -0.6em;
+  vertical-align: -0.85em;
   color: var(--red);
   opacity: 0.85;
-  /* Abstand in rem (unabhängig von der vergrößerten Zeichengröße
-     oben), damit die Lücke wie ein normales Leerzeichen wirkt —
-     wie beim öffnenden Zeichen */
-  margin-left: 0.12rem;
+  /* Abstand in rem (unabhängig von der Zeichengröße), damit die
+     Lücke wie ein normales Leerzeichen wirkt — wie beim öffnenden
+     Zeichen */
+  margin-left: 0.14rem;
 }
 .quote cite {
   grid-column: 2;
@@ -725,7 +734,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .parallax { transform: none !important; }
-  .hero-scroll { animation: none; transform: translateX(-50%); }
+  .scroll-indicator { animation: none; transform: translateX(-50%); }
 }
 
 /* ---------- Responsive ---------- */
