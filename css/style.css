@@ -153,8 +153,8 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   position: absolute;
   inset: -18% 0;
   background-size: cover;
-  /* Fokus auf Silvia (scharf gestellt, links der Mitte im Cover-Artwork) */
-  background-position: 29% 36%;
+  /* Fokus auf Silvia (scharf gestellt im Cover-Artwork) */
+  background-position: 42% 36%;
   filter: saturate(1.15) contrast(1.05);
   will-change: transform;
 }
