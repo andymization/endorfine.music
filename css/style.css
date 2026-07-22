@@ -744,6 +744,9 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
 }
 
 @media (max-width: 720px) {
+  /* Schmale Screens croppen den Hero enger — eigener, weiter nach
+     links verschobener Ausschnitt, damit sie zentriert im Bild bleibt */
+  .hero-bg { background-position: 22% 36%; }
   .nav { padding: 0.55rem 1.1rem; }
   .nav-burger { display: flex; }
   .nav-links {
