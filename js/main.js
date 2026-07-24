@@ -86,8 +86,7 @@
   /* Überall dort, wo der endorfine-Schriftzug im Bild ist, soll das
      Nav-Logo oben links verschwinden — scrollgekoppelt, stufenlos. */
   var navLogoImg = document.querySelector('.nav-logo img');
-  var logoSpots = [].slice.call(document.querySelectorAll('.album-cover img, .footer-logo img'));
-  var musicSection = document.getElementById('music');
+  var logoSpots = [].slice.call(document.querySelectorAll('.hero-logo img, .album-cover img, .footer-logo img'));
   if (!reducedMotion && (layers.length || progressTitles.length)) {
     var ticking = false;
     var update = function () {
@@ -108,23 +107,16 @@
         pt.title.style.setProperty('--p', (p * 100).toFixed(1));
       });
       if (navLogoImg) {
-        /* Hero -> Musik ist so kurz, dass ein kurzes Ein-/Ausblenden
-           dazwischen nur flackert — bis Musik durchgescrollt ist,
-           bleibt das Nav-Logo daher grundsätzlich unsichtbar. */
-        var pastMusic = !musicSection || musicSection.getBoundingClientRect().bottom <= 0;
-        var navO = 0;
-        if (pastMusic) {
-          var pad = 140; /* weichere Übergangszone um die Schriftzüge */
-          var maxFrac = 0;
-          logoSpots.forEach(function (el) {
-            var r = el.getBoundingClientRect();
-            var height = r.height + pad * 2;
-            if (height <= 0) return;
-            var overlap = Math.min(r.bottom + pad, vh) - Math.max(r.top - pad, 0);
-            if (overlap > 0) maxFrac = Math.max(maxFrac, Math.min(1, overlap / height));
-          });
-          navO = 1 - maxFrac;
-        }
+        var pad = 140; /* weichere Übergangszone um die Schriftzüge */
+        var maxFrac = 0;
+        logoSpots.forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          var height = r.height + pad * 2;
+          if (height <= 0) return;
+          var overlap = Math.min(r.bottom + pad, vh) - Math.max(r.top - pad, 0);
+          if (overlap > 0) maxFrac = Math.max(maxFrac, Math.min(1, overlap / height));
+        });
+        var navO = 1 - maxFrac;
         navLogoImg.style.opacity = navO.toFixed(3);
         navLogoImg.parentElement.style.pointerEvents = navO < 0.15 ? 'none' : '';
       }
