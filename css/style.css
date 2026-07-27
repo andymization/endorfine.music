@@ -115,14 +115,22 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--text);
-  background: none;
-  border: 1px solid var(--red);
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   padding: 0.25rem 0.8rem;
   cursor: pointer;
-  transition: background 0.25s, color 0.25s;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
-.lang-toggle:hover { background: var(--red); }
+.lang-toggle:hover {
+  background: linear-gradient(180deg, #d64842, var(--red) 70%, #8f211d);
+  border-color: rgba(255, 255, 255, 0.3);
+}
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -221,6 +229,7 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  position: relative;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -228,25 +237,53 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   text-decoration: none;
   padding: 0.85rem 1.8rem;
   border-radius: 999px;
+  overflow: hidden;
   transition: transform 0.25s, background 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 .btn svg { width: 1em; height: 1em; }
+/* Glasiges Glanzlicht oben links, wie bei iOS 26/27 "Liquid Glass" —
+   in Rot/Schwarz statt hellem Apple-Weiß, damit es zur Bandwelt passt */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 9%;
+  width: 38%;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.5;
+  pointer-events: none;
+}
 .btn-primary {
-  background: var(--red);
+  background: linear-gradient(180deg, #d64842, var(--red) 55%, #8f211d);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: #fff;
-  box-shadow: 0 6px 30px rgba(196, 48, 43, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 -10px 16px rgba(0, 0, 0, 0.25) inset,
+    0 10px 26px rgba(196, 48, 43, 0.45);
 }
 .btn-primary:hover {
-  background: var(--red-bright);
   transform: translateY(-2px);
-  box-shadow: 0 10px 38px rgba(224, 75, 69, 0.5);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -10px 16px rgba(0, 0, 0, 0.25) inset,
+    0 14px 34px rgba(224, 75, 69, 0.55);
 }
 .btn-ghost {
-  border: 1px solid rgba(242, 237, 233, 0.4);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: var(--text);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 .btn-ghost:hover {
-  border-color: var(--red-bright);
+  border-color: rgba(224, 75, 69, 0.5);
   color: var(--red-bright);
   transform: translateY(-2px);
 }
@@ -436,28 +473,48 @@ html[data-lang="en"] td[data-l="en"] { display: table-cell; }
   font-weight: 400;
   letter-spacing: 0.05em;
   color: var(--muted);
-  border: 1px solid var(--line);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   padding: 0.55rem 0.5rem;
   text-align: center;
   white-space: nowrap;
+  overflow: hidden;
   transition: all 0.25s;
-  background: rgba(255, 255, 255, 0.015);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset;
   cursor: pointer;
+}
+.platform::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 34%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
 }
 .platform:hover {
   color: var(--text);
-  border-color: var(--red);
+  border-color: rgba(255, 255, 255, 0.28);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(196, 48, 43, 0.25);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 .platform.selected {
-  border-color: var(--red);
-  background: rgba(196, 48, 43, 0.16);
-  color: var(--text);
+  background: linear-gradient(180deg, #d64842, var(--red) 70%, #8f211d);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
   font-weight: 600;
-  box-shadow: 0 4px 18px rgba(196, 48, 43, 0.3);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 8px 22px rgba(196, 48, 43, 0.4);
 }
+.platform.selected::after { opacity: 0.5; }
 
 /* ---------- Parallax divider ---------- */
 .divider {
