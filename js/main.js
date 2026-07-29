@@ -66,15 +66,39 @@
   window.addEventListener('scroll', onScrollNav, { passive: true });
   onScrollNav();
 
+  /* iOS Safari positioniert "position: fixed"-Elemente manchmal relativ
+     zum gescrollten Dokument statt zum Viewport, wenn body ein
+     overflow-x ungleich visible hat (unser Querscroll-Fix) — dadurch
+     erschien das aufgeklappte Menü bei gescrollter Seite zu weit oben
+     und abgeschnitten. Fix: Hintergrund-Scroll beim Öffnen einfrieren
+     (Standard-Modal-Pattern), das umgeht den Bug gleich mit. */
+  var menuScrollY = 0;
+  function lockScroll() {
+    menuScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = -menuScrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+  }
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo(0, menuScrollY);
+  }
+
   burger.addEventListener('click', function () {
     var open = navLinks.classList.toggle('open');
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) lockScroll(); else unlockScroll();
   });
   navLinks.addEventListener('click', function (e) {
     if (e.target.closest('a')) {
       navLinks.classList.remove('open');
       burger.classList.remove('open');
+      unlockScroll();
     }
   });
 
